@@ -16,8 +16,13 @@ datagroup: 4hr_cache {
 }
 
 explore: order_items {
+  access_filter: {
+    field: products.brand
+    user_attribute: tamra_brand_test
+  }
   label: "Order Items, Products & Users"
   persist_with: 4hr_cache
+
   join: inventory_items {
     relationship: many_to_one
     sql_on: ${inventory_items.id} = ${order_items.inventory_item_id};;
