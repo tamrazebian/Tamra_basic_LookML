@@ -35,6 +35,7 @@ explore: order_items {
   }
 join: products {
   type:  left_outer
+  required_access_grants: [can_view_pii]
 sql_on: ${inventory_items.product_id} = ${products.id} ;;
   relationship: many_to_one
   }
@@ -65,7 +66,6 @@ explore: users {
       filters: [distribution_centers.id: "123"]
     }
     join: products {
-      required_access_grants: [can_view_pii]
       type: left_outer
       sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
       relationship: many_to_one
