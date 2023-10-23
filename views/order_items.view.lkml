@@ -106,7 +106,11 @@ view: order_items {
     value_format_name: percent_2
   }
 
-
+dimension: personal_email {
+  type: string
+  sql: ${id} ;;
+  required_access_grants: [can_view_pii]
+}
 
 
 

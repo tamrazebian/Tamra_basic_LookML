@@ -8,7 +8,7 @@ include: "/views/*.view"                # include all views in the views/ folder
 # # and define the joins that connect them together.
 
 access_grant: can_view_pii {
-  user_attribute: department_tamra_test
+  user_attribute: tamra_department
   allowed_values: [ "management", "executive" ]
 }
 
@@ -65,6 +65,7 @@ explore: users {
       filters: [distribution_centers.id: "123"]
     }
     join: products {
+      required_access_grants: [can_view_pii]
       type: left_outer
       sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
       relationship: many_to_one
