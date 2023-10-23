@@ -7,6 +7,11 @@ include: "/views/*.view"                # include all views in the views/ folder
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
 
+access_grant: can_view_pii {
+  user_attribute: department_tamra_test
+  allowed_values: [ "management", "executive" ]
+}
+
 datagroup: 4hr_cache {
   max_cache_age: "4 hours"
   sql_trigger: SELECT max(id) FROM order_items ;;
